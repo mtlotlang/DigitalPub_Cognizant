@@ -1,0 +1,145 @@
+1. Introduction to Linux and initial setup
+ 
+2. Knowing the Linux terminal and its shortcuts
+ 
+3. Commands for manipulating files and texts and redirection
+ 
+4. Linux Directories and System Commands
+ 
+5. Network Fundamentals and Network Commands
+6. Getting around in Linux with various commands history: show command history
+history -c: clear command history
+ 
+alias hh='history': Name (create variable) the command
+nl file.txt: Show the file as well as cat and show the number of lines wc -l file.txt: Returns the number of lines in a file.
+wc -w file.txt: Returns the number of words in a file.
+wc -m file.txt: Returns the number of characters in a file.
+ 
+ls -a: Returns hidden files
+cmp file1.txt file2.txt: Compare files
+ 
+diff file.txt: Returns the difference in the file sort -n fileNumeric.txt: Returns the numbers sorted last reboot: Returns all system boot information route -n: Show all Kernel IP routing tables
+time command: Returns the process time of the command to be executed
+
+uptime: Shows the time the system is up
+ 
+cowsay "phrase": Returns the phrase with a "kitty"
+xcowsay: Returns the phrase with a "kitty" jumping off the screen cmatrix: Matrix film effect
+ 
+init 0: Shut down the machine now telinit0: Shut down the machine now
+halt: Ask for authentication to shut down the machine
+seq initialNumber endNumber: Prints a sequence of numbers
+ 
+Online virtual machine access https://bellard.org/jslinux/
+ 
+7. Control of users, groups and permissions sudo adduser <username>: Add a new user
+su <username>: Change user
+passwd <username>: Change the user's password
+lastlog: View user login information
+last: Displays a list of user input and output in the system logname: Name of the current user logged into the system
+id: Displays all user IDs
+cat /etc/passwd - Displays all users
+userdel -r <username>: Remove a user and the user's home folder
+ 
+groups
+Lets you organize users and set file and directory access permissions more easily. cat /etc/group: Displays all existing groups on the system
+groups: Displays all user groups addgroup <groupname>: Create a group
+adduser <username> <groupname>: Add user to a group
+gpasswd -a <username> <groupname>: Add another user to a group
+gpasswd -d <username> <groupname>: Remove another user to a group 
+<groupname>: Remove a group
+ 
+permissions
+They serve to restrict accesses such as: reading, writing and execution, where:
+
+r - read(read)
+a - write(writing)
+b - eXecution(execution)
+ 
+
+User(owner)	Group	Other	
+r w x	    r w x	r w	x
+4 2 1	    4 2 1	4 2	1
+
+ls -lh: Check permissions on a directory, file size, creation date, user owner, groups it belongs to. 
+
+OCTAL TABLE
+drwxr-xr-x: d(directory) rwx (owner) rx(user in group) rx(other users in group)
+*rx(read permission, no write permission, execute permission copy, paste, etc.)
+-rw-rw-r--: -(file) rw- (owner) rw-(user in group) r--(other users in group)
+*rw-(read permission, write permission, no execute permission) chmod: Change permission of a file or directory
+Octal Mode (Mask composed of numbers under base 8, i.e. from 0 to 7) First digit represents the owner of the file/group (u)
+The second digit represents the group (g) The third digit represents the others (o)
+*Permissions are specific to each group
+ 
+chmod command
+chmod 000 - Change file/group permission to nothing
+chmod 100 - Change file/group permission to modification only chmod 200 - Change file/group permission to write-only
+chmod 300 - Change file/group permission for writing and modification chmod 400 - Change file/group permission for reading
+chmod 500 - Change file/group permission for reading and modification chmod 600 - Change file/group permission for read and write
+chmod 700 - Change file/group permission for reading, writing and modification
+* The same goes for the other two houses.
+ 
+*sudo su: Enter root mode
+ 
+8. Compression, decompression and archiving
+Compressors are programs that decrease the size of a file or directory.
+
+Extensions identify the type of a file and the program needed to run it.
+ 
+gzip <filename>.txt: Very used compressor with excellent compression. gunzip file.txt.gz: Unzip gzip files
+gzip -9 file.txt: Use maximum compression.
+ 
+zip: <compressionname>.zip file.txt: Compress the file to .zip unzip <ipfilename>.zip: Unzip the .zip file
+ 
+bzip2: Compressor more current than gzip and zip bzip2 <filename>.txt
+unbzip2 -d <bzipfilename2>.bzip2: Unzip the .bzip2 file
+rar - Compactor that needs to be installed on its first use rar a <filenamerar>.rar <filename>.txt
+*the action
+rar x <filename>.rar: Unzip rar file
+ 
+filers
+Merge multiple files into a single file. tar: tar is a widely used archiver on Linux
+tar -cf <filename>.tar <files>.txt: Compress the file in tar tar -xvf <targzfilename>.tar.gz: Unzip .tar and tar.gz file
+ 
+ 
+9. Package Management
+Packages: Programs placed inside a file identified by its extension, and include files needed to install the program. Ex: .deb, .rpm and others.
+ 
+Package managers are systems that have automatic dependency resolution between packages, easy method of package installation. Ex: dpkg, apt and yum.
+ 
+Installing packages/programs with apt sudo apt install <packagename>
+ 
+Updating packages/programs with apt
+
+sudo apt upgrade <packagename>
+ 
+Removing packages/programs with apt sudo apt remove <packagename>
+Updating systems, packages, programs, libraries, files, etc with apt. apt update
+apt upgrade
+apt update && apt upgrade
+*sudo su: Enter root mode
+ 
+package websites pkgs.org rpm.pbone.net
+ 
+*Note: None of these commands can be stopped as they can corrupt the process.
+Installing .deb packages/programs with dpkg sudo dpkg -i <packagename>
+ 
+Package Description
+sudo dpkg -I <packagename>.deb
+ 
+Removing .deb packages/programs with dpkg sudo dpkg -r <packagename>
+*Use the description command to get the package name on the Package line: Managed RPM - Fedora
+Installing .rpm packages/programs rpm -vh <packagename>.rpm
+*Dependency failure
+sudo rpm -ivh --nodeps <packagename>.rpm
+ 
+Updating .rpm packages/programs rpm -U <packagename>.rpm
+ 
+Removing .rpm packages/programs rpm -e <packagename>.rpm
+
+Installing YUM packages/programs sudo yum install <packagename>
+ 
+Updating YUM packages/programs sudo yum update <packagename>
+ 
+Removing YUM packages/programs sudo yum remove <packagename>

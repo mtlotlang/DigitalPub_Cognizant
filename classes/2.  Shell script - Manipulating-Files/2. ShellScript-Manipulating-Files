@@ -1,0 +1,122 @@
+
+What is shell script?
+
+
+Shell in code is a user interface for accessing the services of an operating system.
+
+It is a way of communicating with the system kernel.
+
+You can access the Shell through commands or Graphical Interface.
+
+But on Linux communicated the commands (famous black screen).
+
+
+
+What is Script?
+
+Script is a programming language that runs on no runtime system, much used for automation.
+
+In Unix universal, which is an operating system, where Linux was based, remembering that Linux is not Original Unix, but a build made from scratch based on Unix.
+
+There are several scripting languages for Shell. The most used is Bash and Sh, in this tutorial we will use Bash as it is the most popular in Linux.
+
+
+Commands:
+
+In old computing, it didn't have much memory resource, so commands are reduced.
+
+
+Man - Search for what that command does
+man <command>
+
+(cd - change directory) - Changing between directories with
+cd /: Opens the system root directory.
+cd ~: Open the current user's directory. The user logged in at that instant.
+cd...: Go back directory
+
+
+(ls, ls -l, ls -a, ls -s) - Listing files
+ls - List the content
+ls -l: List content in verbose columns
+ls -a: List contents up to hidden files
+ls -s: List content with allocated size of each file, in block.
+
+(touch) - Create and update the contents of a file
+touch file_name1.txt file_name2.txt ... Create Multiple Files
+touch -a file_name.txt: Change access time
+touch -m file_name.txt: Change modification time
+touch -c file_name.txt: Change access time without creating a new file
+touch -t 202012081047.30 file_name.txt: Set specific access and modification time using touch
+
+
+CCYYMMDDhhmm.ss
+CC: The first two digits of the year.
+YY: The subsequent two digits of the year.
+MM: The month.
+DD: The day.
+hh: The hour.
+mm: The minutes.
+ss: The seconds.
+
+(cat - concatenate) - View file contents
+You can Create files, Merge files and View files
+
+Put the result in another file. cat file1.txt > file_final.txt
+*output redirector >
+
+*To stop the screen scrolling and allow navigation use the pipe |
+more or less
+
+(mv) - Move files
+mv - Move files and directories and rename files and directories.
+-i: Confirm before overwriting if file already exists in directory
+-n: No replacement if file already exists in directory
+-b: Substituting for backup
+-u: Replace if destination file is old or doesn't exist
+
+Ex: mv file1.txt /directory
+
+(cp) - Copy files
+-i: Confirm before overwriting if file already exists in directory
+-v: Specifies the destination the file was sent to
+-l: Create hard links instead of copying files
+-s: Create symlinks instead of copying files
+-u: Copy only when the source file is newer than the destination file or when the destination file does not exist
+
+(mkdir) - Creating directories
+mkdir  Name of Directory
+(rm) - Remove files
+rm file1.txt
+rm -r Name of Directory
+-f: Remove without asking
+
+(find) - Search for files
+find <directory> (./current directory)
+-type f (file type f-file)
+-type d (directory type d-directory)
+-name "o" (file with exact name enclosed in "")
+-name "o*" (file that starts with (letter/word) + anything at the end)
+-name "*o" (file ending with (letter/word) + anything at the beginning)
+-name ".*" (hidden file)
+
+Ex: find ./ -type d -name "meu*"
+
+(diff) - Compare difference between files
+diff file1.txt file2.txt
+* If the files are the same, it will not show any results.
+
+• • (rmdir) - Remove empty directory
+rmdir <directoryname> - Remove empty directory
+100
+rm -rf <DirectoryName> - Remove non-empty directories
+
+(env) - Working with environment variables
+env - List environment variables
+
+PS1: Command line prompt
+
+HOME: Directory "/home" of a user
+
+PATH: List of directories scanned when a command is executed
+
+
